@@ -1,0 +1,30 @@
+{
+	"name": "liter-tests",
+	"tree": {
+		"$className": "DataModel",
+
+		"ReplicatedStorage": {
+			"$className": "ReplicatedStorage",
+
+			"liter": {
+				"$path": "../src"
+			},
+
+			"tests": {
+				"$path": "tests"
+			},
+
+			"TestEz": {
+				"$path": "TestEz"
+			}
+		},
+
+		"ServerScriptService": {
+			"$className": "ServerScriptService",
+
+			"run-tests": {
+				"$path": "run-tests.server.lua"
+			}
+		}
+	}
+}

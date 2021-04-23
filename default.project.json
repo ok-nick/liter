@@ -1,0 +1,22 @@
+{
+	"name": "liter",
+	"tree": {
+		"$className": "DataModel",
+
+		"ReplicatedStorage": {
+			"$className": "ReplicatedStorage",
+
+			"liter": {
+				"$path": "src"
+			},
+
+			"benches": {
+				"$path": "bench/benches"
+			},
+
+			"tests": {
+				"$path": "test/tests"
+			}
+		}
+	}
+}

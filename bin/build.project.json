@@ -1,0 +1,6 @@
+{
+	"name": "liter",
+	"tree": {
+		"$path": "../src"
+	}
+}

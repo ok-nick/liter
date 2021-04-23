@@ -1,0 +1,6 @@
+[package]
+name = 'liter'
+author = 'ok-nick'
+license = 'MIT'
+version = '0.1.0'
+content_root = 'src'

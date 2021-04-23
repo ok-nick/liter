@@ -1,0 +1,22 @@
+{
+	"name": "liter-tests-ci",
+	"tree": {
+		"$className": "DataModel",
+
+		"ReplicatedStorage": {
+			"$className": "ReplicatedStorage",
+
+			"liter": {
+				"$path": "../src"
+			},
+
+			"tests": {
+				"$path": "../test/tests"
+			},
+
+			"TestEz": {
+				"$path": "../test/TestEz"
+			}
+		}
+	}
+}

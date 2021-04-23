@@ -1,0 +1,7 @@
+TODO.md
+roblox.toml
+ignore
+.DS_STORE
+.obsidian
+*.rbxlx
+*.rbxm
