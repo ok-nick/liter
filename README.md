@@ -3,7 +3,7 @@
 [![Latest Release](https://img.shields.io/github/release/ok-nick/liter)](https://github.com/ok-nick/liter/releases/latest)
 
 A powerful Luau library for enhanced Rust-like iterators.
-- **Extensibility:** Liter makes it easy to define custom behavior while preserving functionality by providing a metatable.
+- **Extensibility:** Liter makes it easy to define [custom behavior](#Want-more-control-over-how-you-iterate?) while preserving functionality.
 - **Productivity:** Improve your workflow as you write complex yet legible code.
 - **Parallel?:** Due to liter's extensible nature, parallel iterators could be implemented for significant performance boosts.
 
@@ -28,7 +28,7 @@ end)
 ```
 
 ### Iterating over an array's index/value:
-[:unbox()](README.md#unbox) is used here to unpack the index/value from its array. This behavior is also seen while using the [Hash](README.md#Hash) composite.
+[:unbox()](#unbox) is used here to unpack the index/value from its array. This behavior is also seen while using the [Hash](#Hash) composite.
 ```lua
 liter.array({ 1, 2, 3 }):enumerate():unbox():foreach(function(index, value)
 	doSomething(index, value)
@@ -57,7 +57,7 @@ Iterates over key/values in a HashMap/Dictionary.
 ```lua
 liter.hash(hash: {[key: any]: any}) -> Iterator
 ```
-A hash iterator will return the key/value pair packed into an array. Use the [unbox](README.md#unbox) consumer to unpack the array as show in the [example](README.md#Examples).
+A hash iterator will return the key/value pair packed into an array. Use the [unbox](#unbox) consumer to unpack the array as show in the [example](#Examples).
 
 ### Ascii
 Iterates over ascii characters (most common usage) in a string.
@@ -93,7 +93,7 @@ liter.range(min: number, max: number) -> Iterator
 These methods replicate Rust's [repeat](https://doc.rust-lang.org/std/iter/fn.repeat.html) and [repeat_with](https://doc.rust-lang.org/std/iter/fn.repeat_with.html) sources although are renamed to adhere with Lua syntax.
 
 ### :unbox()
-Unpacks a value into a "tuple." This is particularly useful when dealing with the [Hash](README.md#Hash) composite.
+Unpacks a value into a "tuple." This is particularly useful when dealing with the [Hash](#Hash) composite.
 
 Without unbox:
 ```lua
