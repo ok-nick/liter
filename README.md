@@ -10,7 +10,7 @@ A powerful Luau library for enhanced Rust-like iterators.
 ## Installation
 There are multiple ways to install liter:
 ### Using Studio:
-Pre-built binaries are available from the [GitHub release](https://github.com/ok-nick/solved/releases) page. Simply install the `.rbxm` file and import directly into studio.
+Pre-built binaries are available on the [GitHub release](https://github.com/ok-nick/solved/releases) page. Simply install the `.rbxm` file and import directly into studio.
 ### Using Rojo:
 Same rules apply for installing to studio, just add the `.rbxm` to your `.project.json`  and you should be good to go.
 ### Using Kayak:
@@ -25,6 +25,10 @@ Numerous examples exist within the [unit tests](https://github.com/ok-nick/liter
 liter.array({ 1, 2, 3 }):foreach(function(value)
 	doSomething(value)
 end)
+
+for value in liter.array({ 1, 2, 3 }) do
+	doSomething(value)
+end
 ```
 
 ### Iterating over an array's index/value:
@@ -33,144 +37,130 @@ end)
 liter.array({ 1, 2, 3 }):enumerate():unbox():foreach(function(index, value)
 	doSomething(index, value)
 end)
-```
 
-### Using Lua's "for" syntax:
-```lua
-for value in liter.array({ 1, 2, 3 }) do
+for index, value in liter.array({ 1, 2, 3 }):enumerate():unbox() do
 	doSomething(value)
 end
 ```
 
 ## Performance
-Rust iterators are lazily evaluated which means in order to replicate its behavior, I cannot use native iterators, essentially degrading performance. Although this is a drawback, it offers some unique functionality! It allows you to pass iterators around and evaluate when its actually necessary. This means you don't have to iterate over a table, do some calculations, pass the table around, iterate and evaluate again, and so on... In a situation like this, liter could outperform native iterators!
+Rust iterators are lazily evaluated which means in order to replicate its behavior, I cannot use native iterators. Although this degrades performance, it offers some unique functionality! It allows you to pass iterators and evaluate them when its actually necessary. This means you don't have to iterate over a table, do some calculations, pass the table somewhere else, iterate and evaluate, and so on... In a situation like this, liter could outperform native iterators!
 
 > A Lua-oriented functional approach is in the making for on-demand performant iterators.
 
 Run the [benchmarks](https://github.com/ok-nick/liter/tree/main/bench) using [boatbomber's benchmark plugin](https://devforum.roblox.com/t/benchmarker-plugin-compare-function-speeds-with-graphs-percentiles-and-more/829912?u=iinemo).
 
-## Features
-### Composites
-[Array](#Array)\
-[Hash](#Hash)\
-[Ascii](#Ascii)\
-[Utf8](#Utf8)
-
-### Sources
-[Empty](https://doc.rust-lang.org/std/iter/fn.empty.html)\
-[FromFunc](https://doc.rust-lang.org/std/iter/fn.from_fn.html)\
-[Keys](#Keys)\
-[Once](https://doc.rust-lang.org/std/iter/fn.once.html)\
-[OnceWith](https://doc.rust-lang.org/std/iter/fn.once_with.html)\
-[Range](#Range)\
-[Recur](https://doc.rust-lang.org/std/iter/fn.repeat.html)\
-[RecurWith](https://doc.rust-lang.org/std/iter/fn.repeat_with.html)\
-[Successors](https://doc.rust-lang.org/std/iter/fn.successors.html)\
-[Values](#Values)
-
-### Adapters
-[Chain](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.chain)\
-[Cycle](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.cycle)\
-[Enumerate](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.enumerate)\
-[Filter](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.filter)\
-[FlatMap](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.flat_map)\
-[Inspect](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.inspect)\
-[Intersperse](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.intersperse)\
-[IntersperseWith](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.intersperse_with)\
-[Map](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.map)\
-[Peekable](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.peekable)\
-[Scan](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.scan)\
-[Skip](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.skip)\
-[SkipWhile](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.skip_while)\
-[StepBy](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.step_by)\
-[Take](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.take)\
-[TakeWhile](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.take_while)\
-[Unbox](#Unbox)\
-[Zip](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.zip)
-
-### Consumers
-[foreach](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.for_each)\
-[fold](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.fold)\
-[reduce](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.reduce)\
-[sum](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.sum)\
-[product](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.product)\
-[count](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.count)\
-[last](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.last)\
-[advanceBy](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.advance_by)\
-[nth](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.nth)\
-[partition](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.partition)\
-[partitionInPlace](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.partition_in_place)\
-[isPartitioned](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.is_partitioned)\
-[all](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.all)\
-[any](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.any)\
-[find](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.find)\
-[position](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.position)\
-[max](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.max)\
-[min](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.min)\
-[eq](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.eq)\
-[eqBy](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.eq_by)\
-[ne](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.ne)
-
-## Documentation **[gotchas]**
-All behavior is mimicked exactly like [Rust iterators](https://doc.rust-lang.org/std/iter/trait.Iterator.html). I suggest searching their for clear and concise documentation, although there are a few gotchas and added features documented below.
-
-### Array
-Iterates over values in an array.
+## Documentation
+All behavior is mimicked from [Rust iterators](https://doc.rust-lang.org/std/iter/trait.Iterator.html). I suggest searching their for clear and concise documentation, although there are a few gotchas and added features documented below.
+### **Composites**
+### [Array](#Array)
 ```lua
-liter.array(array: {any}) -> Iterator
+liter.array(array) -> Iterator
 ```
-An array iterator will only return the value unless combined with the [Enumerate adapter](https://github.com/ok-nick/liter/blob/main/src/Adapters/Enumerate.lua).
+Iterates over values in an array. An array iterator will only return the value unless combined with the [Enumerate adapter](https://github.com/ok-nick/liter/blob/main/src/Adapters/Enumerate.lua).
 
-### Hash
-Iterates over key/values in a HashMap/Dictionary.
+### [Ascii](#Ascii)
 ```lua
-liter.hash(hash: {[key: any]: any}) -> Iterator
+liter.ascii(string) -> Iterator
 ```
-A hash iterator will return the key/value pair packed into an array. Use the [unbox](#unbox) consumer to unpack the array as show in the [example](#Examples).
+Iterates over ascii characters in a string.\
+If you're not sure whether to use [Ascii](#Ascii) or  [Utf8](#Utf8), then your most likely just going to need [Ascii](#Ascii).
 
-### Ascii
-Iterates over ascii characters (most common usage) in a string.
+### [Hash](#Hash)
 ```lua
-liter.ascii(str: string) -> Iterator
+liter.hash(hash) -> Iterator
 ```
+Iterates over key/values in a HashMap/Dictionary.\
+A hash iterator will return the key/value pair packed into an array. Use the [Unbox](#Unbox) consumer to unpack the array as shown in the [example](#Examples).
 
-### Utf8
+### [Utf8](#Utf8)
+```lua
+liter.utf8(string) -> Iterator
+```
 Iterates over unicode characters in a string.
-```lua
-liter.utf8(str: string) -> Iterator
-```
 
-### Keys
+### **Sources**
+### [Empty](https://doc.rust-lang.org/std/iter/fn.empty.html)
+
+### [FromFunc](https://doc.rust-lang.org/std/iter/fn.from_fn.html)
+
+### [Keys](#Keys)
+```lua
+liter.keys(table) -> Iterator
+```
 Iterates over keys in a table.
-```lua
-liter.keys(tbl: {[key: any]: any}) -> Iterator
-```
 
-### Values
+### [Once](https://doc.rust-lang.org/std/iter/fn.once.html)
+
+### [OnceWith](https://doc.rust-lang.org/std/iter/fn.once_with.html)
+
+### [Range](#Range)
+```lua
+liter.range(min, max) -> Iterator
+```
+Iterates numerically from the min to the max value.
+
+### [Recur](https://doc.rust-lang.org/std/iter/fn.repeat.html)
+This method replicates Rust's [repeat](https://doc.rust-lang.org/std/iter/fn.repeat.html) source, although is renamed to adhere with Lua syntax.
+
+### [RecurWith](https://doc.rust-lang.org/std/iter/fn.repeat_with.html)
+This method replicates Rust's [repeat_with](https://doc.rust-lang.org/std/iter/fn.repeat_with.html) source, although is renamed to adhere with Lua syntax.
+
+### [Successors](https://doc.rust-lang.org/std/iter/fn.successors.html)
+
+### [Values](#Values)
+```lua
+liter.values(tbl) -> Iterator
+```
 Iterates over values in a table.
+
+### **Adapters**
+### [Chain](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.chain)
+### [Cycle](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.cycle)
+This adapter adopts the same syntax of a [Rust Cycle](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.cycle), although it differs in behavior. The first iteration will cache the resulting values for future iterations. This behavior is guaranteed to change as development progresses.
+
+### [Enumerate](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.enumerate)
+
+### [Filter](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.filter)
+
+### [FlatMap](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.flat_map)
+
+### [Inspect](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.inspect)
+
+### [Intersperse](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.intersperse)
+
+### [IntersperseWith](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.intersperse_with)
+
+### [Map](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.map)
+
+### [Peekable](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.peekable)
+
+### [Scan](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.scan)
+
+### [Skip](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.skip)
+
+### [SkipWhile](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.skip_while)
+
+### [StepBy](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.step_by)
+
+### [Take](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.take)
+
+### [TakeWhile](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.take_while)
+
+### [Unbox](#Unbox)
 ```lua
-liter.values(tbl: {[key: any]: any}) -> Iterator
+Iterator:unbox()
 ```
 
-### Range
-Iterates numerically through the min and max values.
-```lua
-liter.range(min: number, max: number) -> Iterator
-```
-
-### Recur/RecurWith
-These methods replicate Rust's [repeat](https://doc.rust-lang.org/std/iter/fn.repeat.html) and [repeat_with](https://doc.rust-lang.org/std/iter/fn.repeat_with.html) sources although are renamed to adhere with Lua syntax.
-
-### Unbox
 Unpacks a value into a "tuple." This is particularly useful when dealing with the [Hash](#Hash) composite.
 
-Without unbox:
+Without `Unbox`:
 ```lua
 liter.hash({ 1, 2, 3 }):foreach(function(pair)
 	doSomething(pair[1], pair[2])
 end)
 ```
-With unbox:
+With `Unbox`:
 ```lua
 liter.hash({ 1, 2, 3 }):unbox():foreach(function(key, value)
 	doSomething(key, value)
@@ -178,8 +168,50 @@ end)
 ```
 > **_NOTE_:** Unbox will **ONLY** work with packed array returns.
 
-### Cycle
-This adapter adopts the same syntax of a [Rust Cycle](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.cycle), although it differs in behavior. The first iteration will cache the resulting values for future iterations. This behavior is guaranteed to change as development progresses.
+[Zip](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.zip)
+
+### **Consumers**
+### [foreach](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.for_each)
+
+### [fold](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.fold)
+
+### [reduce](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.reduce)
+
+### [sum](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.sum)
+
+### [product](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.product)
+
+### [count](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.count)
+
+### [last](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.last)
+
+### [advanceBy](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.advance_by)
+
+### [nth](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.nth)
+
+### [partition](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.partition)
+
+### [partitionInPlace](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.partition_in_place)
+
+### [isPartitioned](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.is_partitioned)
+
+### [all](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.all)
+
+### [any](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.any)
+
+### [find](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.find)
+
+### [position](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.position)
+
+### [max](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.max)
+
+### [min](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.min)
+
+### [eq](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.eq)
+
+### [eqBy](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.eq_by)
+
+### [ne](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.ne)
 
 ## FAQ
 ### Want more control over how you iterate?
@@ -204,7 +236,8 @@ function Array:after()
 	return self.array[index]
 end
 ```
-Creating custom [adapters](https://github.com/ok-nick/liter/tree/main/src/Adapters) is exactly the same, as seen by the [skip adapter](https://github.com/ok-nick/liter/blob/main/src/Adapters/Skip.lua). It is important to recognize that you could still call internal *consumers* from `self`.
+Assigning `__call` is necessary to preserve the for loop syntax as shown in the [example](#Iterating-over-an-array's-values:).\
+Creating custom [adapters](https://github.com/ok-nick/liter/tree/main/src/Adapters) is exactly the same, as seen by the [Skip adapter](https://github.com/ok-nick/liter/blob/main/src/Adapters/Skip.lua). It is important to recognize that you could still call internal *consumers* from `self`.
 
 ### Any more questions?
 The best way to get in contact with me is [through discord](https://discord.gg/w9Bc6xH7uC).
