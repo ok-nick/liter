@@ -1,3 +1,8 @@
+--[[
+	liter v0.1.0
+	https://github.com/ok-nick/liter
+]]
+
 -- This is really weird, but unfortunately with how Lua imports work, it is
 -- necessary to avoid circular dependencies. Maybe there is a better design?
 local Iterator = require(script.Iterator)
