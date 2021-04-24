@@ -1,6 +1,6 @@
 # liter
 [![CI Status](https://img.shields.io/github/workflow/status/ok-nick/liter/Build)](https://github.com/ok-nick/liter/actions?query=workflow%3ABuild)
-[![Latest Release](https://img.shields.io/github/release/ok-nick/liter)](https://github.com/ok-nick/liter/releases/latest)
+[![Latest Release](https://img.shields.io/github/v/release/ok-nick/liter?include_prereleases)](https://github.com/ok-nick/liter/releases/latest)
 
 A powerful Luau library for enhanced Rust-like iterators.
 - **Extensibility:** Liter makes it easy to define [custom behavior](#Want-more-control-over-how-you-iterate?) while preserving functionality.
