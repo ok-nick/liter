@@ -1,23 +1,23 @@
 local Iterator = require(script.Parent.Parent.Iterator)
 
-local Utf8 = setmetatable({}, Iterator)
-Utf8.__index = Utf8
-Utf8.__call = Iterator.__call
+local Unicode = setmetatable({}, Iterator)
+Unicode.__index = Unicode
+Unicode.__call = Iterator.__call
 
-function Utf8.new(str)
+function Unicode.new(str)
 	return setmetatable({
 		str = str,
 		iterator = utf8.graphemes(str),
-	}, Utf8)
+	}, Unicode)
 end
 
-function Utf8:after()
+function Unicode:after()
 	local first, last = self.iterator(self.str)
 	return first ~= nil and self.str:sub(first, last) or nil
 end
 
-function Utf8:asStr()
+function Unicode:asStr()
 	return self.str
 end
 
-return Utf8
+return Unicode

@@ -1,0 +1,20 @@
+return function()
+	local liter = require(game:GetService('ReplicatedStorage').liter)
+
+	it('should return the next character in the unicode string', function()
+		local iter = liter.unicode('a❤️unicode ❤️')
+
+		expect(iter:after()).to.equal('a')
+		expect(iter:after()).to.equal('❤️')
+		expect(iter:after()).to.equal('u')
+		expect(iter:after()).to.equal('n')
+		expect(iter:after()).to.equal('i')
+		expect(iter:after()).to.equal('c')
+		expect(iter:after()).to.equal('o')
+		expect(iter:after()).to.equal('d')
+		expect(iter:after()).to.equal('e')
+		expect(iter:after()).to.equal(' ')
+		expect(iter:after()).to.equal('❤️')
+		expect(iter:after()).never.to.be.ok()
+	end)
+end

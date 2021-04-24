@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 
+### Changed
+- Renamed `utf8` to `unicode` to avoid global naming conflicts.
+
 ## [0.1.0] - 2021-04-24
 - Initial release!
 

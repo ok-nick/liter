@@ -6,8 +6,8 @@ return {
 	end,
 
 	Functions = {
-		Utf8 = function(_, str)
-			for _ in liter.utf8(str) do
+		Unicode = function(_, str)
+			for _ in liter.unicode(str) do
 			end
 		end,
 

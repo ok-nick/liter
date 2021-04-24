@@ -16,12 +16,12 @@ return {
 
 	successors = require(Sources.Successors).new,
 	recurWith = require(Sources.RecurWith).new,
+	unicode = require(Composites.Unicode).new,
 	fromFunc = require(Sources.FromFunc).new,
 	onceWith = require(Sources.OnceWith).new,
 	array = require(Composites.Array).new,
 	ascii = require(Composites.Ascii).new,
 	values = require(Sources.Values).new,
-	utf8 = require(Composites.Utf8).new,
 	hash = require(Composites.Hash).new,
 	empty = require(Sources.Empty).new,
 	range = require(Sources.Range).new,
