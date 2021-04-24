@@ -76,7 +76,7 @@ Run the [benchmarks](https://github.com/ok-nick/liter/tree/main/bench) using [bo
 [FlatMap](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.flat_map)\
 [Inspect](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.inspect)\
 [Intersperse](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.intersperse)\
-[InterpsperseWith](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.intersperse_with)\
+[IntersperseWith](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.intersperse_with)\
 [Map](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.map)\
 [Peekable](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.peekable)\
 [Scan](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.scan)\
