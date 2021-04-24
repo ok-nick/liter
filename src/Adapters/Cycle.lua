@@ -14,7 +14,7 @@ function Cycle.new(iterator)
 	}, Cycle)
 end
 
--- TODO: Cycle's behavior is subject to change. Instead of caching the result,
+-- TODO: Cycle's behavior is guaranteed to change. Instead of caching the result,
 -- it should create a completely new iterator. Behavior in adapters could
 -- change after the first time it's called.
 function Cycle:after()
