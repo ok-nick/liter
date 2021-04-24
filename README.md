@@ -10,7 +10,8 @@ A powerful Luau library for enhanced Rust-like iterators.
 ## Installation
 There are multiple ways to install liter:
 ### Using Studio:
-Pre-built binaries are available on the [GitHub release](https://github.com/ok-nick/solved/releases) page. Simply install the `.rbxm` file and import directly into studio.
+Pre-built binaries are available on the [GitHub release](https://github.com/ok-nick/solved/releases) page. Simply install the `.rbxm` file and import directly into studio.\
+Liter is also available in the [catalog](https://www.roblox.com/library/6716155863/liter).
 ### Using Rojo:
 Same rules apply for installing to studio, just add the `.rbxm` to your `.project.json`  and you should be good to go.
 ### Using Kayak:
