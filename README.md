@@ -14,8 +14,8 @@ Pre-built binaries are available from the [GitHub release](https://github.com/ok
 ### Using Rojo:
 Same rules apply for installing to studio, just add the `.rbxm` to your `.project.json`  and you should be good to go.
 ### Using Kayak:
-In your `rotriever.toml` file under the `[dependencies]` section, add\
-`liter = 'https://github.com/ok-nick/liter.git'`.
+In your `rotriever.toml` file under the `[dependencies]` section, add:\
+`liter = 'https://github.com/ok-nick/liter.git'`
 
 ## Examples
 Numerous examples exist within the [unit tests](https://github.com/ok-nick/liter/tree/main/test/tests), although I specifically suggest reviewing the [consumer](https://github.com/ok-nick/liter/blob/main/test/tests/Consumers.spec.lua) unit tests.
@@ -28,7 +28,7 @@ end)
 ```
 
 ### Iterating over an array's index/value:
-[:unbox()](#unbox) is used here to unpack the index/value from its array. This behavior is also seen while using the [Hash](#Hash) composite.
+[Unbox](#unbox) is used here to unpack the index/value from its array. This behavior is also seen while using the [Hash](#Hash) composite.
 ```lua
 liter.array({ 1, 2, 3 }):enumerate():unbox():foreach(function(index, value)
 	doSomething(index, value)
@@ -42,8 +42,77 @@ for value in liter.array({ 1, 2, 3 }) do
 end
 ```
 
-## Documentation
-All behavior is mimicked exactly like [Rust iterators](https://doc.rust-lang.org/std/iter/trait.Iterator.html). I suggest searching their for clear and concise documentation, although there are a few gotchas documented below.
+## Performance
+Rust iterators are lazily evaluated which means in order to replicate its behavior, I cannot use native iterators, essentially degrading performance. Although this is a drawback, it offers some unique functionality! It allows you to pass iterators around and evaluate when its actually necessary. This means you don't have to iterate over a table, do some calculations, pass the table around, iterate and evaluate again, and so on... In a situation like this, liter could outperform native iterators!
+
+> A Lua-oriented functional approach is in the making for on-demand performant iterators.
+
+Run the [benchmarks](https://github.com/ok-nick/liter/tree/main/bench) using [boatbomber's benchmark plugin](https://devforum.roblox.com/t/benchmarker-plugin-compare-function-speeds-with-graphs-percentiles-and-more/829912?u=iinemo).
+
+## Features
+### Composites
+[Array](#Array)\
+[Hash](#Hash)\
+[Ascii](#Ascii)\
+[Utf8](#Utf8)
+
+### Sources
+[Empty](https://doc.rust-lang.org/std/iter/fn.empty.html)\
+[FromFunc](https://doc.rust-lang.org/std/iter/fn.from_fn.html)\
+[Keys](#Keys)\
+[Once](https://doc.rust-lang.org/std/iter/fn.once.html)\
+[OnceWith](https://doc.rust-lang.org/std/iter/fn.once_with.html)\
+[Range](#Range)\
+[Recur](https://doc.rust-lang.org/std/iter/fn.repeat.html)\
+[RecurWith](https://doc.rust-lang.org/std/iter/fn.repeat_with.html)\
+[Successors](https://doc.rust-lang.org/std/iter/fn.successors.html)\
+[Values](#Values)
+
+### Adapters
+[Chain](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.chain)\
+[Cycle](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.cycle)\
+[Enumerate](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.enumerate)\
+[Filter](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.filter)\
+[FlatMap](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.flat_map)\
+[Inspect](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.inspect)\
+[Intersperse](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.intersperse)\
+[InterpsperseWith](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.intersperse_with)\
+[Map](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.map)\
+[Peekable](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.peekable)\
+[Scan](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.scan)\
+[Skip](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.skip)\
+[SkipWhile](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.skip_while)\
+[StepBy](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.step_by)\
+[Take](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.take)\
+[TakeWhile](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.take_while)\
+[Unbox](#Unbox)\
+[Zip](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.zip)
+
+### Consumers
+[foreach](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.for_each)\
+[fold](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.fold)\
+[reduce](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.reduce)\
+[sum](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.sum)\
+[product](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.product)\
+[count](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.count)\
+[last](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.last)\
+[advanceBy](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.advance_by)\
+[nth](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.nth)\
+[partition](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.partition)\
+[partitionInPlace](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.partition_in_place)\
+[isPartitioned](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.is_partitioned)\
+[all](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.all)\
+[any](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.any)\
+[find](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.find)\
+[position](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.position)\
+[max](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.max)\
+[min](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.min)\
+[eq](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.eq)\
+[eqBy](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.eq_by)\
+[ne](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.ne)
+
+## Documentation **[gotchas]**
+All behavior is mimicked exactly like [Rust iterators](https://doc.rust-lang.org/std/iter/trait.Iterator.html). I suggest searching their for clear and concise documentation, although there are a few gotchas and added features documented below.
 
 ### Array
 Iterates over values in an array.
@@ -92,7 +161,7 @@ liter.range(min: number, max: number) -> Iterator
 ### Recur/RecurWith
 These methods replicate Rust's [repeat](https://doc.rust-lang.org/std/iter/fn.repeat.html) and [repeat_with](https://doc.rust-lang.org/std/iter/fn.repeat_with.html) sources although are renamed to adhere with Lua syntax.
 
-### :unbox()
+### Unbox
 Unpacks a value into a "tuple." This is particularly useful when dealing with the [Hash](#Hash) composite.
 
 Without unbox:
@@ -107,7 +176,7 @@ liter.hash({ 1, 2, 3 }):unbox():foreach(function(key, value)
 	doSomething(key, value)
 end)
 ```
-> **_NOTE_:** `:unbox()` will **ONLY** work with packed array returns.
+> **_NOTE_:** Unbox will **ONLY** work with packed array returns.
 
 ### Cycle
 This adapter adopts the same syntax of a [Rust Cycle](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.cycle), although it differs in behavior. The first iteration will cache the resulting values for future iterations. This behavior is guaranteed to change as development progresses.
@@ -135,10 +204,10 @@ function Array:after()
 	return self.array[index]
 end
 ```
-Creating custom [adapters](https://github.com/ok-nick/liter/tree/main/src/Adapters) is exactly the same, as seen from the [skip adapter](https://github.com/ok-nick/liter/blob/main/src/Adapters/Skip.lua). It is important to recognize that you could still call internal *consumers* from `self`.
+Creating custom [adapters](https://github.com/ok-nick/liter/tree/main/src/Adapters) is exactly the same, as seen by the [skip adapter](https://github.com/ok-nick/liter/blob/main/src/Adapters/Skip.lua). It is important to recognize that you could still call internal *consumers* from `self`.
 
 ### Any more questions?
 The best way to get in contact with me is [through discord](https://discord.gg/w9Bc6xH7uC).
 
 ## License
-Liter is available under the terms of the Mozilla Public License, Version 2.0. See [LICENSE](LICENSE) for details.
+Liter is [MIT licensed](https://github.com/ok-nick/liter/blob/main/LICENSE.md).
