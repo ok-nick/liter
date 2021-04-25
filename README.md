@@ -1,6 +1,7 @@
 # liter
 [![CI Status](https://img.shields.io/github/workflow/status/ok-nick/liter/Build)](https://github.com/ok-nick/liter/actions?query=workflow%3ABuild)
 [![Latest Release](https://img.shields.io/github/v/release/ok-nick/liter?include_prereleases)](https://github.com/ok-nick/liter/releases/latest)
+[![Discord](https://img.shields.io/discord/834969350061424660)](https://discord.gg/w9Bc6xH7uC)
 
 A powerful Luau library for enhanced Rust-like iterators.
 - **Extensibility:** Liter makes it easy to define [custom behavior](#Want-more-control-over-how-you-iterate?) while preserving functionality.
@@ -9,11 +10,14 @@ A powerful Luau library for enhanced Rust-like iterators.
 
 ## Installation
 There are multiple ways to install liter:
+
 ### Using Studio:
 Pre-built binaries are available on the [GitHub release](https://github.com/ok-nick/liter/releases) page. Simply install the `.rbxm` file and import directly into studio.\
 Liter is also available in the [catalog](https://www.roblox.com/library/6716155863/liter).
+
 ### Using Rojo:
 Same rules apply for installing to studio, just add the `.rbxm` to your `.project.json`  and you should be good to go.
+
 ### Using Kayak:
 In your `rotriever.toml` file under the `[dependencies]` section, add:\
 `liter = 'https://github.com/ok-nick/liter.git'`
