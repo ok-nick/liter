@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 
+### Added
+- [MultiZip](https://docs.rs/itertools/0.10.0/itertools/macro.izip.html) source to iterate over multiple iterators at once.
+
 ### Changed
 - Renamed `utf8` to `unicode` to avoid global naming conflicts.
 

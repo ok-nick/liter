@@ -16,16 +16,18 @@ return {
 
 	successors = require(Sources.Successors).new,
 	recurWith = require(Sources.RecurWith).new,
-	unicode = require(Composites.Unicode).new,
 	fromFunc = require(Sources.FromFunc).new,
 	onceWith = require(Sources.OnceWith).new,
-	array = require(Composites.Array).new,
-	ascii = require(Composites.Ascii).new,
+	multiZip = require(Sources.MultiZip).new,
 	values = require(Sources.Values).new,
-	hash = require(Composites.Hash).new,
 	empty = require(Sources.Empty).new,
 	range = require(Sources.Range).new,
 	recur = require(Sources.Recur).new,
 	keys = require(Sources.Keys).new,
 	once = require(Sources.Once).new,
+
+	hash = require(Composites.Hash).new,
+	array = require(Composites.Array).new,
+	ascii = require(Composites.Ascii).new,
+	unicode = require(Composites.Unicode).new,
 }
