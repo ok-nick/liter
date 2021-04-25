@@ -85,7 +85,6 @@ jobs:
 
     - name: Release
       uses: softprops/action-gh-release@v1
-
       with:
         name: ${{ env.CHANGELOG_ENTRY }}
         tag_name: ${{ env.VERSION }}
