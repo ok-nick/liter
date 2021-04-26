@@ -69,7 +69,7 @@ Iterates over values in an array. An array iterator will only return the value u
 liter.ascii(string) -> Iterator
 ```
 Iterates over ascii characters in a string.\
-If you're not sure whether to use [Ascii](#Ascii) or  [Unicode](#Unicode), then your most likely just going to need [Ascii](#Ascii).
+If you're not sure whether to use [Ascii](#Ascii) or [Utf8](#Utf8), then your most likely just going to need [Ascii](#Ascii).
 
 ### [Hash](#Hash)
 ```lua
@@ -78,14 +78,11 @@ liter.hash(hash) -> Iterator
 Iterates over key/values in a HashMap/Dictionary.\
 A hash iterator will return the key/value pair packed into an array. Use the [Unbox](#Unbox) consumer to unpack the array as shown in the [example](#Examples).
 
-### [Unicode](#Unicode) [Unreleased]
+### [Utf8](#Utf8)
 ```lua
-liter.unicode(string) -> Iterator
+liter.utf8(string) -> Iterator
 ```
 Iterates over utf8 characters in a string.
-
-### [Utf8](#Utf8) [v0.1.0]
-Same behavior as [Unicode](#unicode-unreleased), deprecated >v0.1.0.
 
 ### **Sources**
 ### [Empty](https://doc.rust-lang.org/std/iter/fn.empty.html)
